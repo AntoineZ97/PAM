@@ -1,0 +1,23 @@
+// Initialisation
+
+sudo apt-get install cryptsetup
+dd if=/dev/zero of=encrypted bs=IM count=1024
+sudo cryptsetup luksFormat encrypted
+sudo cryptsetup luksOpen encrypted crypt1
+mkdir decrypted
+sudo mount /dev/mapper/crypt1 decrypted/
+sudo mkfs.ext4 -j /dev/mapper/crypt1
+sudo mount /dev/mapper/crypt1 decrypted/
+sudo chown $USER -R decrypted/
+sudo umount /dev/mapper/crypt1
+sudo cryptsetup luksClose crypt1
+
+// Ouverture
+
+sudo cryptsetup luksOpen encrypted crypt1
+sudo mount /dev/mapper/crypt1 decrypted/
+
+// Fermeture
+
+sudo umount /dev/mapper/crypt1
+sudo cryptsetup luksClose crypt1
