@@ -3,7 +3,7 @@
 
 *Ne pas utiliser n'importe comment.*
 
-## **Lire le code avant utilisation**
+## **Lire le code avant utilisation et l'install.sh.**
 
 **OS : Linux**
 
